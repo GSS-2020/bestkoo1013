@@ -1160,6 +1160,47 @@ button:not(.controls button):active {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Install/Download Button */
+.install-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.install-button:hover {
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.install-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Hide install button in fullscreen mode */
+.fullscreen-mode .install-button {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 /* Hide sound toggle in fullscreen mode */
 .fullscreen-mode .sound-toggle {
     display: none !important;
@@ -1272,5 +1313,14 @@ button:not(.controls button):active {
         right: 15px;
         padding: 10px 16px;
         font-size: 0.9em;
+    }
+    
+    /* Mobile responsive for install button */
+    .install-button {
+        top: 10px;
+        left: 10px;
+        width: 120px;
+        height: 40px;
+        font-size: 12px;
     }
 }

@@ -67,6 +67,11 @@
             <button id="clear-stats" onclick="clearStatistics()">Kosongkan Statistik</button>
         </div>
         
+        <!-- Install/Download Button -->
+        <button class="install-button" id="install-button" onclick="installApp()" title="Install Game" style="display: none;">
+            📱 Install Game
+        </button>
+        
         <!-- Full Screen Toggle Button -->
         <button class="fullscreen-toggle" onclick="toggleFullScreen()" title="Toggle Full Screen">
             🔳
@@ -80,6 +85,15 @@
         <div class="instructions">
             <h3>Cara Bermain:</h3>
             <div class="instructions-content">
+                <h4>📱 Install Game (PWA):</h4>
+                <ul>
+                    <li><strong>Klik tombol "📱 Install Game"</strong> di pojok kiri atas untuk install sebagai app</li>
+                    <li><strong>Android:</strong> Menu browser → "Add to Home Screen" atau "Install App"</li>
+                    <li><strong>iOS Safari:</strong> Share button (⬆️) → "Add to Home Screen"</li>
+                    <li><strong>Desktop:</strong> Icon install di address bar atau menu browser</li>
+                    <li><strong>Offline Gaming:</strong> Setelah install, game boleh dimain tanpa internet!</li>
+                </ul>
+                
                 <h4>🎯 Objektif Permainan:</h4>
                 <p>Kepung titik lawan dengan menggunakan strategi dan perangkap untuk mencapai skor tertinggi!</p>
                 
@@ -88,7 +102,7 @@
                     <li><strong>Pemain 1 (Hitam)</strong> dan <strong>Pemain 2 (Merah)</strong> bergilir-gilir</li>
                     <li>Klik pada titik persimpangan (L1-L9, B1-B9) untuk meletakkan titik anda</li>
                     <li>Titik yang sudah ditempatkan tidak boleh digantikan</li>
-                    <li>Pemain yang mencapai <strong>10 kepungan</strong> atau lebih menang!</li>
+                    <li>Pemain yang mencapai <strong>skor kemenangan</strong> (10/12/14 kepungan) menang!</li>
                 </ul>
                 
                 <h4>⚔️ Sistem Kepungan:</h4>
@@ -96,6 +110,14 @@
                     <li><strong>Kepung Biasa:</strong> Kelilingi titik lawan dengan <strong>4 atau lebih</strong> titik anda</li>
                     <li>Titik yang dikepung akan ditandai dengan ✖ dan dikira sebagai skor</li>
                     <li>Garisan akan muncul menghubungkan titik-titik yang membuat kepungan</li>
+                </ul>
+                
+                <h4>🔄 Sistem Counter-Capture (Baru!):</h4>
+                <ul>
+                    <li><strong>Risiko Kepungan:</strong> Titik yang berjaya kepung lawan juga boleh dikepung balik!</li>
+                    <li><strong>Strategi Berisiko:</strong> Setiap kepungan membuka peluang counter-attack</li>
+                    <li><strong>Timing Penting:</strong> System check kedua-dua pemain selepas setiap move</li>
+                    <li><strong>Double Strategy:</strong> Kena fikir attack dan defense serentak!</li>
                 </ul>
                 
                 <h4>🎭 Sistem Perangkap Tersembunyi:</h4>
@@ -108,9 +130,11 @@
                 
                 <h4>🏆 Cara Menang:</h4>
                 <ul>
-                    <li>Capai <strong>10 kepungan</strong> atau lebih untuk menang automatik</li>
+                    <li><strong>Easy Mode:</strong> 10 kepungan untuk menang</li>
+                    <li><strong>Medium Mode:</strong> 12 kepungan untuk menang</li>
+                    <li><strong>Hard Mode:</strong> 14 kepungan untuk menang</li>
                     <li>Jika papan penuh, pemain dengan skor tertinggi menang</li>
-                    <li>Gunakan gabungan kepungan biasa dan perangkap untuk strategi terbaik!</li>
+                    <li>Gunakan gabungan kepungan, counter-capture dan perangkap untuk strategi terbaik!</li>
                 </ul>
                 
                 <h4>💡 Tips Strategi:</h4>
@@ -118,7 +142,16 @@
                     <li><strong>Perangkap Awal:</strong> Buat perangkap kecil di sudut untuk peluang mudah</li>
                     <li><strong>Jebak Ganda:</strong> Cipta beberapa perangkap untuk membingungkan lawan</li>
                     <li><strong>Pertahanan:</strong> Jangan biarkan lawan kelilingi titik anda</li>
-                    <li><strong>Serangan:</strong> Cari peluang untuk kepung kumpulan titik lawan</li>
+                    <li><strong>Serangan Berisiko:</strong> Kepung lawan tapi jaga jangan kena counter-capture!</li>
+                    <li><strong>Positioning:</strong> Letakkan titik strategik yang sukar dikepung balik</li>
+                </ul>
+                
+                <h4>🎮 Kontrol Game:</h4>
+                <ul>
+                    <li><strong>🔳 Full Screen:</strong> Klik untuk mode full screen gaming</li>
+                    <li><strong>🔊 Sound:</strong> Toggle sound effects on/off</li>
+                    <li><strong>📱 Install:</strong> Install sebagai app untuk offline gaming</li>
+                    <li><strong>📊 Statistics:</strong> Lihat record kemenangan dan statistik</li>
                 </ul>
                 
                 <p><strong>🎮 Selamat Bermain dan Gunakan Strategi Terbaik Anda!</strong></p>
@@ -253,14 +286,14 @@
             // Stash the event so it can be triggered later
             deferredPrompt = e;
             
-            // Optionally show custom install button
-            // showInstallButton();
+            // Show custom install button
+            showInstallButton();
         });
         
         window.addEventListener('appinstalled', function(e) {
             console.log('🎉 App installed successfully!');
             // Hide install button if shown
-            // hideInstallButton();
+            hideInstallButton();
         });
         
         // Function to trigger install prompt (can be called from button)
@@ -270,12 +303,55 @@
                 deferredPrompt.userChoice.then(function(choiceResult) {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('✅ User accepted the install prompt');
+                        hideInstallButton();
                     } else {
                         console.log('❌ User dismissed the install prompt');
                     }
                     deferredPrompt = null;
                 });
+            } else {
+                // Fallback: Show instructions for manual installation
+                showInstallInstructions();
             }
+        }
+        
+        // Install button functions
+        function showInstallButton() {
+            const installButton = document.getElementById('install-button');
+            if (installButton && !isStandalone()) {
+                installButton.style.display = 'flex';
+                console.log('📱 Install button shown');
+            }
+        }
+        
+        function hideInstallButton() {
+            const installButton = document.getElementById('install-button');
+            if (installButton) {
+                installButton.style.display = 'none';
+                console.log('📱 Install button hidden');
+            }
+        }
+        
+        function installApp() {
+            triggerInstall();
+        }
+        
+        function showInstallInstructions() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isAndroid = /Android/.test(navigator.userAgent);
+            
+            let instructions = '';
+            
+            if (isIOS) {
+                instructions = '📱 Untuk install di iOS:\n1. Tap Share button (⬆️) di Safari\n2. Pilih "Add to Home Screen"\n3. Tap "Add"';
+            } else if (isAndroid) {
+                instructions = '📱 Untuk install di Android:\n1. Tap menu (⋮) di browser\n2. Pilih "Add to Home Screen" atau "Install App"\n3. Tap "Add"';
+            } else {
+                instructions = '💻 Untuk install di Desktop:\n1. Klik icon install di address bar\n2. Atau gunakan menu browser > Install App\n3. Follow the prompts';
+            }
+            
+            alert(instructions);
         }
         
         // Detect if app is running in standalone mode (installed)
@@ -287,7 +363,16 @@
         
         if (isStandalone()) {
             console.log('🚀 App is running in standalone mode (installed)');
-            // Hide install prompts or show different UI
+            // Hide install button since app is already installed
+            hideInstallButton();
+        } else {
+            // Show install button after a delay to check for beforeinstallprompt
+            setTimeout(function() {
+                if (!deferredPrompt) {
+                    // No install prompt available, show button anyway for manual instructions
+                    showInstallButton();
+                }
+            }, 2000);
         }
     </script>
 </body>

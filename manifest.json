@@ -1,0 +1,72 @@
+{
+  "name": "Game Titik Kertas Metamatik",
+  "short_name": "Titik Kertas",
+  "description": "Game strategi Titik Kertas dengan AI pintar dan sistem kepungan",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#4CAF50",
+  "background_color": "#ffffff",
+  "scope": "./",
+  "lang": "id",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiM0Q0FGNTAI/>CjxjaXJjbGUgY3g9IjQ4IiBjeT0iNDgiIHI9IjEyIiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9Ijk2IiBjeT0iNDgiIHI9IjEyIiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9IjE0NCIgY3k9IjQ4IiByPSIxMiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSI0OCIgY3k9Ijk2IiByPSIxMiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSI5NiIgY3k9Ijk2IiByPSIxMiIgZmlsbD0iI0ZGNTcyMiIvPgo8Y2lyY2xlIGN4PSIxNDQiIGN5PSI5NiIgcj0iMTIiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSIxNDQiIHI9IjEyIiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9Ijk2IiBjeT0iMTQ0IiByPSIxMiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSIxNDQiIGN5PSIxNDQiIHI9IjEyIiBmaWxsPSIjMkU3RDMyIi8+CjxsaW5lIHgxPSI0OCIgeTE9IjQ4IiB4Mj0iMTQ0IiB5Mj0iNDgiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxsaW5lIHgxPSI0OCIgeTE9Ijk2IiB4Mj0iMTQ0IiB5Mj0iOTYiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxsaW5lIHgxPSI0OCIgeTE9IjE0NCIgeDI9IjE0NCIgeTI9IjE0NCIgc3Ryb2tlPSIjMkU3RDMyIiBzdHJva2Utd2lkdGg9IjIiLz4KPGxpbmUgeDE9IjQ4IiB5MT0iNDgiIHgyPSI0OCIgeTI9IjE0NCIgc3Ryb2tlPSIjMkU3RDMyIiBzdHJva2Utd2lkdGg9IjIiLz4KPGxpbmUgeDE9Ijk2IiB5MT0iNDgiIHgyPSI5NiIgeTI9IjE0NCIgc3Ryb2tlPSIjMkU3RDMyIiBzdHJva2Utd2lkdGg9IjIiLz4KPGxpbmUgeDE9IjE0NCIgeTE9IjQ4IiB4Mj0iMTQ0IiB5Mj0iMTQ0IiBzdHJva2U9IiMyRTdEMzIiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiM0Q0FGNTAI/>CjxjaXJjbGUgY3g9IjEyOCIgY3k9IjEyOCIgcj0iMzIiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iMjU2IiBjeT0iMTI4IiByPSIzMiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSIzODQiIGN5PSIxMjgiIHI9IjMyIiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9IjEyOCIgY3k9IjI1NiIgcj0iMzIiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIzMiIgZmlsbD0iI0ZGNTcyMiIvPgo8Y2lyY2xlIGN4PSIzODQiIGN5PSIyNTYiIHI9IjMyIiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9IjEyOCIgY3k9IjM4NCIgcj0iMzIiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iMjU2IiBjeT0iMzg0IiByPSIzMiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSIzODQiIGN5PSIzODQiIHI9IjMyIiBmaWxsPSIjMkU3RDMyIi8+CjxsaW5lIHgxPSIxMjgiIHkxPSIxMjgiIHgyPSIzODQiIHkyPSIxMjgiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIxMjgiIHkxPSIyNTYiIHgyPSIzODQiIHkyPSIyNTYiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIxMjgiIHkxPSIzODQiIHgyPSIzODQiIHkyPSIzODQiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIxMjgiIHkxPSIxMjgiIHgyPSIxMjgiIHkyPSIzODQiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIyNTYiIHkxPSIxMjgiIHgyPSIyNTYiIHkyPSIzODQiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIzODQiIHkxPSIxMjgiIHgyPSIzODQiIHkyPSIzODQiIHN0cm9rZT0iIzJFN0QzMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "features": [
+    "fullscreen",
+    "offline",
+    "responsive",
+    "installable"
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2OCIgdmlld0JveD0iMCAwIDMyMCA1NjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNTY4IiBmaWxsPSIjZjVmNWY1Ii8+CjxyZWN0IHg9IjE2IiB5PSI2NCIgd2lkdGg9IjI4OCIgaGVpZ2h0PSI0ODAiIHJ4PSI4IiBmaWxsPSIjNENBRjUwIi8+CjxjaXJjbGUgY3g9IjgwIiBjeT0iMTYwIiByPSIxMiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjEyIiBmaWxsPSIjRkY1NzIyIi8+CjxjaXJjbGUgY3g9IjI0MCIgY3k9IjE2MCIgcj0iMTIiIGZpbGw9IiMyRTdEMzIiLz4KPHRleHQgeD0iMTYwIiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HYW1lIFRpdGlrIEtlcnRhPC90ZXh0Pgo8L3N2Zz4K",
+      "sizes": "320x568",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSI3NjgiIHZpZXdCb3g9IjAgMCAxMDI0IDc2OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMjQiIGhlaWdodD0iNzY4IiBmaWxsPSIjZjVmNWY1Ii8+CjxyZWN0IHg9IjMyIiB5PSI2NCIgd2lkdGg9Ijk2MCIgaGVpZ2h0PSI2NDAiIHJ4PSIxNiIgZmlsbD0iIzRDQUY1MCIvPgo8Y2lyY2xlIGN4PSIyNTYiIGN5PSIzMDAiIHI9IjI0IiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9IjUxMiIgY3k9IjMwMCIgcj0iMjQiIGZpbGw9IiNGRjU3MjIiLz4KPGNpcmNsZSBjeD0iNzY4IiBjeT0iMzAwIiByPSIyNCIgZmlsbD0iIzJFN0QzMiIvPgo8dGV4dCB4PSI1MTIiIHk9IjQwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiMzMzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkdhbWUgVGl0aWsgS2VydGEgTWV0YW1hdGlrPC90ZXh0Pgo8L3N2Zz4K",
+      "sizes": "1024x768",
+      "type": "image/svg+xml",
+      "form_factor": "wide"
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "offline_enabled": true,
+  "prefer_related_applications": false,
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "shortcuts": [
+    {
+      "name": "Main Game",
+      "short_name": "Play",
+      "description": "Mulai permainan baru",
+      "url": "./index.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMTIiIGZpbGw9IiM0Q0FGNTAI/>CjxjaXJjbGUgY3g9IjI0IiBjeT0iMjQiIHI9IjYiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSIyNCIgcj0iNiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSI3MiIgY3k9IjI0IiByPSI2IiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9IjI0IiBjeT0iNDgiIHI9IjYiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNiIgZmlsbD0iI0ZGNTcyMiIvPgo8Y2lyY2xlIGN4PSI3MiIgY3k9IjQ4IiByPSI2IiBmaWxsPSIjMkU3RDMyIi8+CjxjaXJjbGUgY3g9IjI0IiBjeT0iNzIiIHI9IjYiIGZpbGw9IiMyRTdEMzIiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSI3MiIgcj0iNiIgZmlsbD0iIzJFN0QzMiIvPgo8Y2lyY2xlIGN4PSI3MiIgY3k9IjcyIiByPSI2IiBmaWxsPSIjMkU3RDMyIi8+Cjwvc3ZnPgo=",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

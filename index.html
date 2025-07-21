@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Titik Kertas Matematik</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Titik Kertas">
 </head>
 <body>
     <div class="container">
@@ -187,5 +192,103 @@
     </div>
     
     <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        // Register Service Worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(function(registration) {
+                        console.log('✅ Service Worker registered successfully:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            console.log('🔄 New Service Worker installing...');
+                            
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed') {
+                                    if (navigator.serviceWorker.controller) {
+                                        console.log('🆕 New content available, please refresh!');
+                                        // Optionally show update notification to user
+                                    } else {
+                                        console.log('📦 Content cached for offline use!');
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+                
+                // Handle service worker messages
+                navigator.serviceWorker.addEventListener('message', function(event) {
+                    console.log('📨 Message from Service Worker:', event.data);
+                });
+                
+                // Request service worker version info
+                if (navigator.serviceWorker.controller) {
+                    const messageChannel = new MessageChannel();
+                    messageChannel.port1.onmessage = function(event) {
+                        console.log('📊 Service Worker info:', event.data);
+                    };
+                    navigator.serviceWorker.controller.postMessage({
+                        type: 'GET_VERSION'
+                    }, [messageChannel.port2]);
+                }
+            });
+        } else {
+            console.log('❌ Service Workers not supported in this browser');
+        }
+        
+        // Handle app install prompt
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', function(e) {
+            console.log('🎯 Install prompt available');
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            
+            // Optionally show custom install button
+            // showInstallButton();
+        });
+        
+        window.addEventListener('appinstalled', function(e) {
+            console.log('🎉 App installed successfully!');
+            // Hide install button if shown
+            // hideInstallButton();
+        });
+        
+        // Function to trigger install prompt (can be called from button)
+        function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function(choiceResult) {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('✅ User accepted the install prompt');
+                    } else {
+                        console.log('❌ User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+        
+        // Detect if app is running in standalone mode (installed)
+        function isStandalone() {
+            return (window.matchMedia('(display-mode: standalone)').matches) || 
+                   (window.navigator.standalone) || 
+                   document.referrer.includes('android-app://');
+        }
+        
+        if (isStandalone()) {
+            console.log('🚀 App is running in standalone mode (installed)');
+            // Hide install prompts or show different UI
+        }
+    </script>
 </body>
 </html>
